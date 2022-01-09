@@ -118,8 +118,9 @@ function Layout() {
 
           <Route exact path="/">
             <Home 
-            deckList={deckList} 
-            deckDelete={deckDelete}
+            history={history}
+            deckList={deckList}
+            setDeckList={setDeckList}
             />
           </Route>
 
