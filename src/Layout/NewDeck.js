@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import {addDeck} from "../utils/utils";
 
-function NewDeck({addDeck}) {
+function NewDeck({history, deckList, setDeckList}) {
     //declare deck state
     let [deck, setDeck] = useState({ "name": "", "decription": ""});
 
@@ -19,7 +20,7 @@ function NewDeck({addDeck}) {
             </ol>
         </nav>
         <h2>Create Deck</h2>
-        <form onSubmit={(event) => addDeck(deck, event)}>
+        <form onSubmit={(event) => addDeck(history, deckList, setDeckList, deck, event)}>
             <div className="form-group">
             <label for="name">Name
                 <input

@@ -58,20 +58,6 @@ function Layout() {
     }
   }
 
-  //Handle add deck
-  async function addDeck(deck, event) {
-    event.preventDefault();
-    try {
-      await createDeck(deck);
-      const response = await listDecks();
-      await setDeckList(response);
-      const deckId = deckList.length + 1;
-      history.push(`/decks/${deckId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   //Handle edit deck
   async function deckEdit(updatedDeck, event) {
     event.preventDefault();
@@ -125,7 +111,10 @@ function Layout() {
           </Route>
 
           <Route exact path="/decks/new">
-            <NewDeck addDeck={addDeck} />
+            <NewDeck 
+            history={history}
+            deckList={deckList}
+            setDeckList={setDeckList} />
           </Route>
 
           <Route path="/decks/:deckId">
