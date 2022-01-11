@@ -5,7 +5,7 @@ import NotFound from "./NotFound";
 import Home from "./Home";
 import NewDeck from "./NewDeck";
 import Decks from "./Decks";
-import {listDecks, deleteDeck, deleteCard, updateDeck, createCard, updateCard, createDeck} from "../utils/api/index";
+import {listDecks} from "../utils/api";
 
 function Layout() {
 
@@ -31,71 +31,6 @@ function Layout() {
     return () => abortController.abort();
   }, []);
 
-  //Handle deck delete
-  async function deckDelete(deckId) {
-    if(window.confirm("Delete this deck? You will not be able to recover it.")) {
-      try {
-        await deleteDeck(deckId);
-        const response = await listDecks();
-        setDeckList(response);
-        history.push("/")
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
-
-  //Handle card delete
-  async function cardDelete(cardId) {
-    if(window.confirm("Delete this card? You will not be able to recover it.")) {
-      try {
-        await deleteCard(cardId)
-        const response = await listDecks()
-        setDeckList(response);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
-
-  //Handle edit deck
-  async function deckEdit(updatedDeck, event) {
-    event.preventDefault();
-    try {
-      await updateDeck(updatedDeck);
-      const response = await listDecks();
-      setDeckList(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  //Handle add card
-  async function addCard(deckId, card, setCard, event) {
-    event.preventDefault();
-    try {
-      await createCard(deckId, card);
-      setCard({"front": "", "back": ""})
-      const response = await listDecks();
-      setDeckList(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  //Handle edit card
-  async function editCard(card, event) {
-    event.preventDefault();
-    try {
-      await updateCard(card);
-      const response = await listDecks();
-      setDeckList(response);
-      history.push(`/decks/${card.deckId}`)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <>
       <Header />
@@ -119,12 +54,9 @@ function Layout() {
 
           <Route path="/decks/:deckId">
             <Decks 
-            deckList={deckList} 
-            deckDelete={deckDelete} 
-            cardDelete={cardDelete} 
-            deckEdit={deckEdit}
-            addCard={addCard}
-            editCard={editCard}
+            history={history}
+            deckList={deckList}
+            setDeckList={setDeckList}
             />
           </Route>
 

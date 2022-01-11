@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
 import {readDeck} from "../../../utils/api/index";
+import {addCard} from "../../../utils/utils";
 import CardForm from "../../../components/CardForm";
 
-function AddCard({addCard}) {
+function AddCard({setDeckList}) {
     //Declare deck state and get deck id
     let {deckId} = useParams();
     let [deck, setDeck] = useState();
@@ -19,7 +20,7 @@ function AddCard({addCard}) {
 
     //Handle submit
     function handleSubmit(card, event) {
-        addCard(card, event);
+        addCard(deckId, card, setCard, setDeckList, event);
     }
 
     //Get deck info
@@ -37,7 +38,7 @@ function AddCard({addCard}) {
 
         loadDeck();
         return () => abortController.abort();
-    }, [])
+    }, [deckId])
 
     //Wait for deck info to load
     if (!deck) { return <p>Loading...</p>}

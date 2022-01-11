@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import CardList from "../../components/CardList";
 import {readDeck} from "../../utils/api/index";
+import {deckDelete} from "../../utils/utils";
 
-function Deck({deckDelete, cardDelete}) {
+function Deck({history, setDeckList}) {
     //Get deck id from parameters
     let {deckId} = useParams();
     let [deck, setDeck] = useState();
@@ -23,7 +24,7 @@ function Deck({deckDelete, cardDelete}) {
 
         loadDeck();
         return () => abortController.abort();
-    }, [])
+    }, [deckId])
 
     if(!deck) { return <p>Loading...</p> }
 
@@ -41,10 +42,10 @@ function Deck({deckDelete, cardDelete}) {
             <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary">Edit</Link>
             <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">Study</Link>
             <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">Add Cards</Link>
-            <button onClick={() => deckDelete(deckId)} className="btn btn-danger">Delete</button>
+            <button onClick={() => deckDelete(history, setDeckList, deckId)} className="btn btn-danger">Delete</button>
             </div>
         </div>
-        <CardList deck={deck} cardDelete={cardDelete} />
+        <CardList history={history} deck={deck} setDeckList={setDeckList} />
     </div>
 
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {cardDelete} from "../utils/utils";
 
-function CardList({deck, cardDelete}) {
+function CardList({history, deck, setDeckList}) {
     if (!deck) {return null}
 
     function CardLister(card) {
-        return <div className="card-group">
+        return <div key={card.id} className="card-group">
             <div className="card">
                 <p>{card.front}</p>
             </div>
@@ -13,7 +14,7 @@ function CardList({deck, cardDelete}) {
                 <p>{card.back}</p>
                 <div>
                     <Link to={`/decks/${card.deckId}/cards/${card.id}/edit`} className="btn btn-secondary">Edit</Link>
-                    <button onClick={() => cardDelete(card.id)} className="btn btn-danger">Delete</button>
+                    <button onClick={() => cardDelete(history, setDeckList, card.id)} className="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>

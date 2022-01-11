@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {useParams, Link} from "react-router-dom";
 import {readDeck, readCard} from "../../../utils/api/index";
+import {editCard} from "../../../utils/utils";
 import CardForm from "../../../components/CardForm";
 
-function EditCard({editCard}) {
+function EditCard({history, setDeckList}) {
     //Declare card state and get card id
     let {deckId, cardId} = useParams();
     let [deck, setDeck] = useState();
@@ -16,10 +17,10 @@ function EditCard({editCard}) {
 
     //Handle submit
     function handleSubmit(card, event) {
-        editCard(card, event);
+        editCard(history, setDeckList, card, event);
     }
 
-    //Get deck and card info
+    //Get deck info
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -27,6 +28,21 @@ function EditCard({editCard}) {
             try {
                 const response = await readDeck(deckId);
                 setDeck(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        loadDeck();
+        return () => abortController.abort();
+    }, [deckId])
+
+    //Get card info
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        async function loadDeck() {
+            try {
                 const cardResponse = await readCard(cardId);
                 setCard(cardResponse);
             } catch (error) {
@@ -36,7 +52,7 @@ function EditCard({editCard}) {
 
         loadDeck();
         return () => abortController.abort();
-    }, [])
+    }, [cardId])
 
     //Wait for deck info to load
     if (!deck || !card) { return <p>Loading...</p>}

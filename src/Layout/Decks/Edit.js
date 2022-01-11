@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
 import {readDeck} from "../../utils/api/index";
+import {deckEdit} from "../../utils/utils";
 
-function Edit({deckEdit}) {
+function Edit({setDeckList}) {
     //Declare deck state and get deck id
     let {deckId} = useParams();
     let [deck, setDeck] = useState();
@@ -27,7 +28,7 @@ function Edit({deckEdit}) {
 
         loadDeck();
         return () => abortController.abort();
-    }, [])
+    }, [deckId])
 
     //Wait for deck info to load
     if (!deck) { return <p>Loading...</p>}
@@ -41,7 +42,7 @@ function Edit({deckEdit}) {
                 </ol>
             </nav>
             <h2>Edit Deck</h2>
-            <form onSubmit={(event) => deckEdit(deck, event)}>
+            <form onSubmit={(event) => deckEdit(deck, setDeckList, event)}>
                 <div className="form-group">
                 <label for="name">Name
                     <input

@@ -30,7 +30,7 @@ function Study() {
         
         loadDeck();
         return () => abortController.abort();
-    }, []);
+    }, [deckId]);
     
     //Loading check
     if (!deck) { return <p>Loading...</p>}
@@ -100,7 +100,7 @@ function Study() {
 
     //Show front or back, based on state
     let cardFace = deck.cards[index].front;
-    if (flipped == "back") {
+    if (flipped === "back") {
         cardFace = deck.cards[index].back;
     }
 
