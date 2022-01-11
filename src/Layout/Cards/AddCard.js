@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
-import {readDeck} from "../../../utils/api/index";
-import {addCard} from "../../../utils/utils";
-import CardForm from "../../../components/CardForm";
+import {readDeck} from "../../utils/api/index";
+import {addCard} from "../../utils/utils";
+import CardForm from "../../components/CardForm";
 
 function AddCard({setDeckList}) {
     //Declare deck state and get deck id

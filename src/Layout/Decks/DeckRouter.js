@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import NotFound from "./NotFound";
-import Study from "./Decks/Study";
-import Deck from "./Decks/Deck";
-import Edit from "./Decks/Edit";
-import AddCard from "./Decks/Cards/AddCard";
-import EditCard from "./Decks/Cards/EditCard";
+import NotFound from "../NotFound";
+import Study from "./Study";
+import Deck from "./Deck";
+import Edit from "./Edit";
+import AddCard from "../Cards/AddCard";
+import EditCard from "../Cards/EditCard";
 
-function Decks({history, deckList, setDeckList}) {
+function DeckRouter({history, setDeckList}) {
 
     return <Switch>
 
@@ -42,4 +42,4 @@ function Decks({history, deckList, setDeckList}) {
     </Switch>
 }
 
-export default Decks;
+export default DeckRouter;

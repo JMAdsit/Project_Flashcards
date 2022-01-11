@@ -3,8 +3,8 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./Home";
-import NewDeck from "./NewDeck";
-import Decks from "./Decks";
+import NewDeck from "./Decks/NewDeck";
+import DeckRouter from "./Decks/DeckRouter";
 import {listDecks} from "../utils/api";
 
 function Layout() {
@@ -53,9 +53,8 @@ function Layout() {
           </Route>
 
           <Route path="/decks/:deckId">
-            <Decks 
+            <DeckRouter 
             history={history}
-            deckList={deckList}
             setDeckList={setDeckList}
             />
           </Route>

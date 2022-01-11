@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {addDeck} from "../utils/utils";
+import {addDeck} from "../../utils/utils";
 
 function NewDeck({history, deckList, setDeckList}) {
     //declare deck state
