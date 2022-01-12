@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {cardDelete} from "../utils/utils";
+import {cardDelete} from "../../utils/utils";
 
 function CardList({history, deck, setDeckList}) {
     if (!deck) {return null}

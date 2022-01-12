@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {deckDelete} from "../utils/utils";
+import {deckDelete} from "../../utils/utils";
 
 function DeckDisplayList({history, deckList, setDeckList}) {
     //Define deck display function

@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import NotFound from "../NotFound";
-import Study from "./Study";
-import Deck from "./Deck";
-import Edit from "./Edit";
-import AddCard from "../Cards/AddCard";
-import EditCard from "../Cards/EditCard";
+import NotFound from "./NotFound";
+import Study from "../components/Decks/Study";
+import Deck from "../components/Decks/Deck";
+import Edit from "../components/Decks/Edit";
+import AddCard from "../components/Cards/AddCard";
+import EditCard from "../components/Cards/EditCard";
 
 function DeckRouter({history, setDeckList}) {
 

@@ -3,8 +3,8 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./Home";
-import NewDeck from "./Decks/NewDeck";
-import DeckRouter from "./Decks/DeckRouter";
+import NewDeck from "../components/Decks/NewDeck";
+import DeckRouter from "./DeckRouter";
 import {listDecks} from "../utils/api";
 
 function Layout() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DeckDisplayList from "../components/DeckDisplayList.js"
+import DeckDisplayList from "../components/Decks/DeckDisplayList.js"
 
 function Home({history, deckList, setDeckList}) {
     return <div>
