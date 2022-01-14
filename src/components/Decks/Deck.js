@@ -26,8 +26,10 @@ function Deck({history, setDeckList}) {
         return () => abortController.abort();
     }, [deckId])
 
+    //Render loading message while waiting for deck from backend
     if(!deck) { return <p>Loading...</p> }
 
+    //render deck info and breadcrumb
     return  <div>
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">

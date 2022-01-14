@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 function CardForm({deck, card, changeHandler, handleSubmit}) {
+
+    //Render form for cards 
     return <form onSubmit={(event) => handleSubmit(card, event)}>
         <div className="form-group">
             <label for="front">Front

@@ -12,6 +12,7 @@ function NewDeck({history, deckList, setDeckList}) {
         }
 
 
+    //render new deck page with breadcrumbs
     return <div>
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">

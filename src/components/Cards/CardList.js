@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import {cardDelete} from "../../utils/utils";
 
 function CardList({history, deck, setDeckList}) {
+    //render nothing until a deck is supplied from backend
     if (!deck) {return null}
 
+    //renderer for individual cards
     function CardLister(card) {
         return <div key={card.id} className="card-group">
             <div className="card">
@@ -20,6 +22,7 @@ function CardList({history, deck, setDeckList}) {
         </div>
     }
 
+    //render all cards in deck
     let CardListDisplay = deck.cards.map(CardLister)
 
     return <div>{CardListDisplay}</div>

@@ -33,6 +33,7 @@ function Edit({setDeckList}) {
     //Wait for deck info to load
     if (!deck) { return <p>Loading...</p>}
     
+    //render edit page with breadcrumbs
     return <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">

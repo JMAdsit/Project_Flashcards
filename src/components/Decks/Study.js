@@ -104,6 +104,7 @@ function Study() {
         cardFace = deck.cards[index].back;
     }
 
+    //render study page with breadcrumbs
     return <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
