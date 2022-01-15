@@ -9,6 +9,7 @@ import {listDecks} from "../utils/api";
 
 function Layout() {
 
+  //Declare deck list state and history variable
   let [deckList, setDeckList] = useState([]);
   const history = useHistory();
 
@@ -49,7 +50,8 @@ function Layout() {
             <NewDeck 
             history={history}
             deckList={deckList}
-            setDeckList={setDeckList} />
+            setDeckList={setDeckList} 
+            />
           </Route>
 
           <Route path="/decks/:deckId">

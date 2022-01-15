@@ -1,6 +1,7 @@
 import React from "react";
 
 function Header() {
+  //render header
   return (
     <header className="jumbotron bg-dark">
       <div className="container text-white">
